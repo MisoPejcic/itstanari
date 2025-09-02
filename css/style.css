@@ -52,11 +52,20 @@ header .header-inner {
 }
 
 .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--accent-color);
     text-decoration: none;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    display: block;
+    max-width: 100%;
 }
 
 nav ul {
@@ -388,6 +397,32 @@ footer p {
 .service-details p {
     line-height: 1.8;
     margin-bottom: 1.5rem;
+}
+
+.service-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.service-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.service-images-grid .service-image {
+    margin: 0;
 }
 
 .pricing-section {
@@ -868,5 +903,17 @@ footer p {
     
     .cta-section {
         padding: 2rem;
+    }
+    
+    .service-images-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-image {
+        margin: 1rem 0;
+    }
+    
+    .logo-img {
+        height: 45px;
     }
 }
