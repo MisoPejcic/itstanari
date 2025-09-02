@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekti - itstanari.com</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">itstanari.com</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Početna</a></li>
+                        <li><a href="o-nama.html">O Nama</a></li>
+                        <li><a href="usluge.html">Usluge</a></li>
+                        <li><a href="projekti.html">Projekti</a></li>
+                        <li><a href="cjenovnik.html">Cjenovnik</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Naši Uspješno Realizovani Projekti</h1>
+            <p class="page-intro">Kroz godine rada, realizovali smo brojne projekte koji su transformisali poslovanje naših klijenata. Svaki projekat predstavlja jedinstvenu priču o inovaciji, posvećenosti i stručnosti našeg tima.</p>
+            
+            <article class="project-detail reveal">
+                <div class="project-header">
+                    <h2>ERP Sistem za Proizvodni Pogon "MetalCraft"</h2>
+                    <div class="project-meta">
+                        <span class="project-date">Januar 2024 - Septembar 2024</span>
+                        <span class="project-category">Enterprise Rješenja</span>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <h3>Izazov</h3>
+                    <p>Kompanija MetalCraft, vodeći proizvođač metalnih konstrukcija u regionu sa preko 500 zaposlenih, suočavala se sa ozbiljnim problemima u upravljanju proizvodnim procesima. Njihov postojeći sistem bio je fragmentovan, sa podatcima rasutim kroz različite Excel tabele i zastarjele aplikacije. Praćenje zaliha bilo je netačno, planiranje proizvodnje neoptimalno, a komunikacija između odjeljenja spora i nepouzdana. Gubici zbog neefikanosti procjenjivani su na preko 200.000 KM godišnje.</p>
+                    
+                    <h3>Naše Rješenje</h3>
+                    <p>Razvili smo potpuno prilagođen ERP sistem koji integriše sve aspekte poslovanja MetalCraft-a. Sistem je dizajniran korištenjem moderne mikroservisne arhitekture, omogućavajući skalabilnost i fleksibilnost. Backend je implementiran u .NET Core 8.0 sa Entity Framework za upravljanje podatcima, dok je frontend razvijen u Angular 17 sa Material Design komponentama za intuitivno korisničko iskustvo.</p>
+                    
+                    <p>Ključne funkcionalnosti koje smo implementirali uključuju: modul za upravljanje zalihama sa real-time praćenjem kroz QR kodove i RFID tehnologiju, napredni sistem planiranja proizvodnje sa AI optimizacijom koji uzima u obzir kapacitete mašina, raspoloživost radnika i rokove isporuke, integrisani CRM sistem za praćenje narudžbi i komunikaciju sa klijentima, modul za upravljanje ljudskim resursima sa evidencijom radnog vremena kroz biometrijske uređaje, business intelligence dashboard sa naprednim izvještajima i prediktivnom analitikom, te mobilnu aplikaciju za pristup sistemu sa terena.</p>
+                    
+                    <h3>Tehnički Detalji</h3>
+                    <p>Arhitektura sistema zasnovana je na Domain-Driven Design principima sa jasno definisanim bounded kontekstima. Implementirali smo CQRS pattern za optimalno razdvajanje čitanja i pisanja podataka, Event Sourcing za potpunu reviziju svih promjena u sistemu, te Message Queue (RabbitMQ) za asinhronu komunikaciju između servisa. Sistem je hostovan na Azure Cloud platformi sa automatskim skaliranjem resursa prema potrebi. Za sigurnost smo implementirali OAuth 2.0 autentifikaciju, end-to-end enkripciju osjetljivih podataka, te redovne sigurnosne audite.</p>
+                    
+                    <h3>Rezultati</h3>
+                    <p>Nakon implementacije našeg ERP sistema, MetalCraft je zabilježio impresivne rezultate: smanjenje troškova skladištenja za 35% kroz optimizaciju zaliha, povećanje produktivnosti za 28% kroz bolje planiranje proizvodnje, smanjenje vremena obrade narudžbi sa 3 dana na 4 sata, eliminacija grešaka u fakturisanju koje su ranije koštale kompaniju preko 50.000 KM godišnje, te povećanje zadovoljstva zaposlenih kroz pojednostavljene procese rada. ROI na investiciju ostvaren je za samo 14 mjeseci, što je značajno brže od početnih projekcija.</p>
+                    
+                    <div class="project-technologies">
+                        <h4>Korištene Tehnologije:</h4>
+                        <div class="tech-tags">
+                            <span>.NET Core 8.0</span>
+                            <span>Angular 17</span>
+                            <span>Azure Cloud</span>
+                            <span>SQL Server</span>
+                            <span>Redis Cache</span>
+                            <span>RabbitMQ</span>
+                            <span>Docker</span>
+                            <span>Kubernetes</span>
+                            <span>SignalR</span>
+                            <span>Power BI</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-detail reveal">
+                <div class="project-header">
+                    <h2>E-Commerce Platforma "BHShop"</h2>
+                    <div class="project-meta">
+                        <span class="project-date">Mart 2024 - Juli 2024</span>
+                        <span class="project-category">Web Aplikacije</span>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <h3>Izazov</h3>
+                    <p>BHShop, ambiciozni startup sa vizijom da postane vodeća online trgovina u Bosni i Hercegovini, trebao je modernu e-commerce platformu koja može da podrži brz rast i pruži izuzetno korisničko iskustvo. Izazov je bio kreirati platformu koja nije samo funkcionalna, već i dovoljno fleksibilna da se prilagodi različitim tipovima proizvoda, od elektronike do odjeće, sa podrškom za različite načine plaćanja specifične za naše tržište.</p>
+                    
+                    <h3>Naše Rješenje</h3>
+                    <p>Dizajnirali smo i implementirali sveobuhvatnu e-commerce platformu koja kombinuje najbolje prakse moderne web trgovine sa specifičnostima lokalnog tržišta. Platforma je građena kao headless commerce rješenje, omogućavajući potpunu fleksibilnost u prezentaciji sadržaja preko različitih kanala - web, mobilne aplikacije, pa čak i fizičke prodavnice kroz POS integraciju.</p>
+                    
+                    <p>Implementirali smo napredni sistem upravljanja proizvodima sa podrškom za neograničen broj varijanti, atributa i kategorija. Svaki proizvod može imati detaljne specifikacije, galeriju slika sa zoom funkcionalnostima, video prezentacije, te povezane i preporučene proizvode bazirane na AI algoritmima. Sistem upravljanja zalihama omogućava real-time praćenje dostupnosti proizvoda kroz više skladišta, automatske notifikacije za niski nivo zaliha, te integraciju sa dobavljačima za automatsko naručivanje.</p>
+                    
+                    <p>Posebnu pažnju posvetili smo korisničkom iskustvu. Implementirali smo naprednu pretragu sa Elasticsearch-om koja omogućava instant rezultate, filtriranje po brojnim kriterijumima, te ispravku grešaka u kucanju. Sistem preporuka baziran na machine learning algoritmima analizira ponašanje korisnika i predlaže relevantne proizvode, povećavajući prosječnu vrijednost narudžbe za preko 40%.</p>
+                    
+                    <h3>Napredne Funkcionalnosti</h3>
+                    <p>Checkout proces je optimizovan do najsitnijih detalja. Implementirali smo one-page checkout sa progresivnim otkrivanjem informacija, guest checkout opciju za brže kupovine, te pamćenje podataka za registrovane korisnike. Integracija sa lokalnim platnim procesorima omogućava plaćanje karticama svih banaka u BiH, PayPal i Stripe za međunarodne transakcije, te plaćanje pouzećem sa automatskim generisanjem uplatnica.</p>
+                    
+                    <p>Marketing funkcionalnosti uključuju napredni sistem kupona i popusta sa različitim pravilima primjene, program lojalnosti sa bodovima koji se mogu zamijeniti za popuste, affiliate program za partnere, email marketing automatizaciju sa segmentacijom korisnika, te A/B testiranje različitih verzija stranica za optimizaciju konverzije.</p>
+                    
+                    <h3>Tehnička Implementacija</h3>
+                    <p>Frontend aplikacija razvijena je u Next.js 14 sa React 18, omogućavajući server-side rendering za bolje SEO performanse i brže učitavanje stranica. Koristili smo TypeScript za type-safety, Tailwind CSS za brz razvoj responzivnog dizajna, te React Query za efikasno upravljanje server state-om. Backend API razvijen je u Node.js sa Express frameworkom i GraphQL-om za fleksibilno dohvatanje podataka. MongoDB služi kao primarna baza podataka zbog svoje fleksibilnosti sa proizvodnim podatcima, dok Redis osigurava brzo keširanje i session management.</p>
+                    
+                    <h3>Rezultati i Performanse</h3>
+                    <p>Platforma je lansirana sa impresivnim rezultatima: vrijeme učitavanja stranice ispod 2 sekunde na 3G mreži, Core Web Vitals score preko 95 za sve metrike, podrška za preko 10.000 istovremenih korisnika bez degradacije performansi. U prvih 6 mjeseci rada, BHShop je zabilježio preko 50.000 registrovanih korisnika, 15.000 uspješnih narudžbi, prosječnu stopu konverzije od 3.8% (duplo više od industrijskog prosjeka), te mjesečni rast prometa od 25%.</p>
+                    
+                    <div class="project-technologies">
+                        <h4>Korištene Tehnologije:</h4>
+                        <div class="tech-tags">
+                            <span>Next.js 14</span>
+                            <span>React 18</span>
+                            <span>TypeScript</span>
+                            <span>Node.js</span>
+                            <span>GraphQL</span>
+                            <span>MongoDB</span>
+                            <span>Redis</span>
+                            <span>Elasticsearch</span>
+                            <span>Stripe API</span>
+                            <span>AWS S3</span>
+                            <span>Cloudflare CDN</span>
+                            <span>Vercel</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-detail reveal">
+                <div class="project-header">
+                    <h2>Mobilna Banka "mBank Plus"</h2>
+                    <div class="project-meta">
+                        <span class="project-date">Oktobar 2023 - April 2024</span>
+                        <span class="project-category">Mobilne Aplikacije</span>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <h3>Izazov</h3>
+                    <p>Jedna od vodećih banaka u regionu angažovala nas je za potpunu transformaciju njihove mobilne bankarske aplikacije. Postojeća aplikacija bila je zastarjela, sa lošim korisničkim iskustvom, čestim padovima i ograničenim funkcionalnostima. Banka je gubila mlade klijente koji su prelazili na konkurenciju sa modernijim digitalnim rješenjima. Cilj je bio kreirati aplikaciju koja ne samo da zadovoljava trenutne potrebe, već postavlja nove standarde u mobilnom bankarstvu u našem regionu.</p>
+                    
+                    <h3>Naše Rješenje</h3>
+                    <p>Razvili smo revolucionarnu mobilnu bankarsku aplikaciju koja kombinuje najnovije tehnologije sa intuitivnim dizajnom. Aplikacija je razvijena korištenjem React Native tehnologije, omogućavajući nam da iz jedne codebaze održavamo i iOS i Android verzije, značajno smanjujući troškove razvoja i održavanja. Implementirali smo napredne sigurnosne mjere uključujući biometrijsku autentifikaciju (otisak prsta i prepoznavanje lica), end-to-end enkripciju svih komunikacija, certificate pinning za sprječavanje man-in-the-middle napada, te jailbreak/root detekciju za dodatnu sigurnost.</p>
+                    
+                    <p>Korisničko iskustvo je potpuno redizajnirano sa fokusom na jednostavnost i brzinu. Implementirali smo personalizirani dashboard koji prikazuje najbitnije informacije na osnovu korisničkih navika, quick actions za najčešće operacije dostupne odmah sa početnog ekrana, dark mode za ugodnije korištenje u različitim svjetlosnim uslovima, te napredne animacije i micro-interactions za prirodniji osjećaj aplikacije.</p>
+                    
+                    <h3>Inovativne Funkcionalnosti</h3>
+                    <p>Aplikacija uključuje brojne inovativne funkcionalnosti koje je izdvajaju od konkurencije. AI-bazirani finansijski asistent analizira potrošnju korisnika i daje personalizirane savjete za uštedu, upozorava na neobične transakcije koje mogu biti znak prevare, te predlaže optimalne bankarske proizvode na osnovu finansijskog profila. Sistem za upravljanje budžetom omogućava postavljanje mjesečnih budžeta po kategorijama, real-time praćenje potrošnje sa vizuelnim prikazima, te automatske notifikacije kada se približava limit.</p>
+                    
+                    <p>Implementirali smo i napredne funkcionalnosti plaćanja: QR kod skeniranje za instant plaćanja, NFC plaćanja direktno iz aplikacije (gdje je podržano), split bill funkcionalnost za dijeljenje računa među prijateljima, te scheduled i recurring payments za automatizaciju redovnih plaćanja. Investicioni modul omogućava trading akcijama i fondovima direktno iz aplikacije, real-time praćenje portfolia sa detaljnim analitikama, te edukativni sadržaj za početnike u investiranju.</p>
+                    
+                    <h3>Tehnička Arhitektura</h3>
+                    <p>Backend sistema dizajniran je kao mikroservisna arhitektura sa visokom dostupnošću i skalabilnošću. Svaki mikroservis je containerizovan korištenjem Docker-a i orkestrovan kroz Kubernetes. Koristimo Apache Kafka za event streaming između servisa, omogućavajući real-time procesiranje transakcija. Implementirali smo sophisticated caching strategiju sa Redis Cluster-om, smanjujući opterećenje na core banking sisteme za preko 70%. Za analitiku koristimo ELK stack (Elasticsearch, Logstash, Kibana) koji omogućava real-time monitoring i brzu identifikaciju problema.</p>
+                    
+                    <h3>Rezultati i Uticaj</h3>
+                    <p>Lansiranje nove aplikacije donijelo je izvanredne rezultate: broj aktivnih korisnika povećan za 250% u prvih 6 mjeseci, prosječna ocjena u app store-ovima povećana sa 2.8 na 4.7 zvjezdica, broj digitalnih transakcija povećan za 180%, smanjenje broja poziva call centru za 40% zbog intuitivnog dizajna. Aplikacija je osvojila nagradu za najbolju fintech aplikaciju u regionu 2024. godine. Posebno je važno što je 65% novih korisnika u dobi između 18-35 godina, što je bio ključni cilj banke za privlačenje mlađe demografije.</p>
+                    
+                    <div class="project-technologies">
+                        <h4>Korištene Tehnologije:</h4>
+                        <div class="tech-tags">
+                            <span>React Native</span>
+                            <span>TypeScript</span>
+                            <span>Node.js</span>
+                            <span>Java Spring Boot</span>
+                            <span>PostgreSQL</span>
+                            <span>Redis Cluster</span>
+                            <span>Apache Kafka</span>
+                            <span>Docker</span>
+                            <span>Kubernetes</span>
+                            <span>AWS</span>
+                            <span>ElasticSearch</span>
+                            <span>GraphQL</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-detail reveal">
+                <div class="project-header">
+                    <h2>AI-Powered CRM Sistem "SmartRelations"</h2>
+                    <div class="project-meta">
+                        <span class="project-date">Maj 2023 - Januar 2024</span>
+                        <span class="project-category">AI & Machine Learning</span>
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <h3>Izazov</h3>
+                    <p>Regionalna telekomunikaciona kompanija sa preko milion korisnika trebala je moderan CRM sistem koji može da upravlja ogromnim volumenom podataka i interakcija sa klijentima. Postojeći sistem bio je limitiran u mogućnostima analize podataka, nije mogao da predvidi churn (odlazak klijenata), te nije pružao personalizirane preporuke za upsell i cross-sell. Kompanija je gubila oko 15% klijenata godišnje zbog neadekvatnog customer relationship managementa.</p>
+                    
+                    <h3>Naše Rješenje</h3>
+                    <p>Razvili smo napredni CRM sistem sa integrisanim AI i machine learning mogućnostima koji transformiše način na koji kompanija interaguje sa svojim klijentima. Sistem koristi napredne algoritme za analizu ponašanja klijenata, predviđanje njihovih potreba i automatizaciju mnogih procesa koji su ranije zahtijevali manuelni rad. Centralni dio sistema je AI engine koji kontinuirano uči iz podataka i poboljšava svoje predviđanje tokom vremena.</p>
+                    
+                    <p>Implementirali smo sofisticirani churn prediction model koji analizira preko 200 različitih faktora uključujući: istoriju korištenja usluga, pattern poziva u customer support, sentiment analizu komunikacije, promjene u navikama korištenja, te demografske i geografske podatke. Model postiže tačnost od preko 85% u predviđanju koji klijenti će napustiti kompaniju u naredna 3 mjeseca, omogućavajući proaktivne retention kampanje.</p>
+                    
+                    <h3>AI Funkcionalnosti</h3>
+                    <p>Natural Language Processing (NLP) modul analizira sve oblike komunikacije sa klijentima - emailove, chat poruke, transkripte poziva, social media interakcije. Sistem automatski ekstraktuje ključne informacije, prepoznaje sentiment (pozitivan, neutralan, negativan), identificira urgentne slučajeve koji zahtijevaju hitnu pažnju, te kategorizuje zahtjeve za efikasniju distribuciju među agentima. Implementirali smo i automatske odgovore za česte upite, koji se kontinuirano poboljšavaju kroz reinforcement learning.</p>
+                    
+                    <p>Recommendation engine koristi collaborative filtering i content-based filtering tehnike za generisanje personalizovanih preporuka za svakog klijenta. Sistem analizira koje proizvode i usluge koriste slični klijenti, identificira potrebe na osnovu životnog ciklusa klijenta, te predlaže optimalno vrijeme za kontaktiranje sa ponudom. Ovaj pristup je povećao uspješnost upsell kampanja za preko 60%.</p>
+                    
+                    <h3>Tehnička Implementacija</h3>
+                    <p>Sistem je izgrađen korištenjem Python-a za machine learning komponente sa TensorFlow i scikit-learn bibliotekama. Real-time data processing implementiran je kroz Apache Spark, omogućavajući analizu miliona eventi u sekundi. Koristimo Apache Airflow za orkestraciju kompleksnih data pipeline-ova, te MLflow za tracking eksperimenata i model verzioniranje. Frontend je razvijen u React sa Redux state managementom, dok je backend API implementiran u FastAPI za maksimalne performanse.</p>
+                    
+                    <p>Data arhitektura zasnovana je na lakehouse konceptu, kombinirajući najbolje od data warehouse i data lake pristupa. Koristimo Delta Lake format za ACID transakcije nad big data, omogućavajući i batch i streaming analytics nad istim podatcima. Implementirali smo i sophisticated data governance sa automatskim data lineage tracking-om i GDPR compliance funkcionalnostima.</p>
+                    
+                    <h3>Rezultati</h3>
+                    <p>Implementacija SmartRelations CRM sistema donijela je transformacione rezultate: smanjenje churn rate-a sa 15% na 8% godišnje, što predstavlja zadržavanje dodatnih 70.000 klijenata, povećanje customer lifetime value za 35% kroz bolje targetirane upsell kampanje, smanjenje average handling time u call centru za 25% kroz AI-assisted agent tools, povećanje Net Promoter Score (NPS) sa 32 na 61. ROI na projekat ostvaren je za samo 10 mjeseci, sa projekcijom ušteda od preko 5 miliona KM godišnje.</p>
+                    
+                    <div class="project-technologies">
+                        <h4>Korištene Tehnologije:</h4>
+                        <div class="tech-tags">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>PyTorch</span>
+                            <span>Apache Spark</span>
+                            <span>Delta Lake</span>
+                            <span>FastAPI</span>
+                            <span>React</span>
+                            <span>Redux</span>
+                            <span>Apache Airflow</span>
+                            <span>MLflow</span>
+                            <span>Kubernetes</span>
+                            <span>PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 itstanari.com. Sva prava zadržana.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
