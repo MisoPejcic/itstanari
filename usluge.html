@@ -6,6 +6,21 @@
     <title>Naše Usluge - itstanari.com</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Sakrij originalni Chatislav odmah -->
+    <style>
+        #ctslv_bbl,
+        #ctslv_bbl iframe,
+        .chatislav-widget,
+        .chatislav-container,
+        [id*="chatislav"],
+        [class*="chatislav"] {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -184,5 +199,24 @@
         token: "ca3c5833-4924-4d2e-9bf4-fe62dc4210e5"
       });
     </script>
+
+    <script>
+      window.chatislavGifConfig = {
+        gifs: {
+          welcome: './gifs/mahanje.gif',
+          idle: './gifs/cekanje.gif',
+          thinking: './gifs/razmisljanje.gif',
+          fallingAsleep: './gifs/zaspao.gif',
+          sleeping: './gifs/spava.gif',
+          wakingUp: './gifs/budjenje.gif'
+        },
+        gifZoom: 1.3,
+        gifOffsetX: -310,
+        gifOffsetY: -180,
+        debug: false
+      };
+    </script>
+    <script src="chatislav-gif-wrapper.js"></script>
+
 </body>
 </html>
