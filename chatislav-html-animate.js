@@ -836,6 +836,7 @@
     state.inputElement.value = '';
 
     state.isWaitingResponse = true;
+    state.currentAnimation = 'thinking';
     showAnimation('thinking', ['main', 'avatar', 'header']);
 
     if (!state.wsConnection || state.wsConnection.readyState !== WebSocket.OPEN) {
