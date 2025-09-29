@@ -349,10 +349,20 @@
     state.messagesContainer = messagesContainer;
     state.animationContainer = animationContainer;
 
-    chatButton.onclick = () => openModal();
+    chatButton.onclick = () => {
+      if (state.isOpen) {
+        closeModal();
+      } else {
+        openModal();
+      }
+    };
     chatButton.ontouchend = (e) => {
       e.preventDefault();
-      openModal();
+      if (state.isOpen) {
+        closeModal();
+      } else {
+        openModal();
+      }
     };
     modalOverlay.onclick = () => closeModal();
     document.getElementById('close-modal').onclick = () => closeModal();
@@ -368,6 +378,11 @@
     input.onfocus = () => {
       input.style.borderColor = '#667eea';
       resetInactivityTimer();
+      if (isMobile) {
+        setTimeout(() => {
+          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+      }
     };
     input.onblur = () => {
       input.style.borderColor = '#e0e0e0';
@@ -560,16 +575,15 @@
     const dialog = document.getElementById('chat-modal-dialog');
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+    if (isMobile) {
+      window.scrollTo(0, 0);
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = '0';
+    }
+
     overlay.style.display = 'block';
     dialog.style.display = 'flex';
-
-    if (isMobile) {
-      document.body.style.overflow = 'hidden';
-      const viewportMeta = document.querySelector('meta[name="viewport"]');
-      if (viewportMeta) {
-        viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover');
-      }
-    }
 
     setTimeout(() => {
       overlay.style.opacity = '1';
@@ -612,7 +626,9 @@
       overlay.style.display = 'none';
       dialog.style.display = 'none';
       if (isMobile) {
-        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+        document.body.style.top = '';
       }
     }, 300);
 
