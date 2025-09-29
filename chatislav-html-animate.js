@@ -155,10 +155,10 @@
     modalDialog.style.cssText = `
       display: none;
       position: fixed;
-      ${isMobile ? 'top: 0; left: 0; transform: none;' : 'top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);'}
+      ${isMobile ? 'top: 0; left: 0; bottom: 0; transform: none;' : 'top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);'}
       width: ${isMobile ? '100%' : '850px'};
-      height: ${isMobile ? '100vh' : '600px'};
-      max-height: ${isMobile ? '100vh' : '90vh'};
+      height: ${isMobile ? '100%' : '600px'};
+      max-height: ${isMobile ? '100%' : '90vh'};
       background: white;
       border-radius: ${isMobile ? '0' : '15px'};
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -272,8 +272,11 @@
     messagesContainer.style.cssText = `
       flex: 1;
       overflow-y: auto;
+      overflow-x: hidden;
       padding: 20px;
       background: #f8f9fa;
+      -webkit-overflow-scrolling: touch;
+      min-height: 0;
     `;
 
     const inputContainer = document.createElement('div');
@@ -375,17 +378,48 @@
       if (e.key === 'Enter') sendMessage();
     };
 
+    let originalHeight = window.innerHeight;
+
+    const handleResize = () => {
+      if (isMobile && state.isOpen) {
+        const currentHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        const dialog = document.getElementById('chat-modal-dialog');
+        if (dialog) {
+          dialog.style.height = currentHeight + 'px';
+        }
+      }
+    };
+
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', handleResize);
+    } else {
+      window.addEventListener('resize', handleResize);
+    }
+
     input.onfocus = () => {
       input.style.borderColor = '#667eea';
       resetInactivityTimer();
       if (isMobile) {
         setTimeout(() => {
-          input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const dialog = document.getElementById('chat-modal-dialog');
+          const currentHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+          if (dialog) {
+            dialog.style.height = currentHeight + 'px';
+          }
+          inputContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
         }, 300);
       }
     };
     input.onblur = () => {
       input.style.borderColor = '#e0e0e0';
+      if (isMobile) {
+        setTimeout(() => {
+          const dialog = document.getElementById('chat-modal-dialog');
+          if (dialog) {
+            dialog.style.height = '100%';
+          }
+        }, 100);
+      }
     };
 
     modalDialog.addEventListener('click', () => {
