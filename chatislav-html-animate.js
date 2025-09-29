@@ -155,10 +155,10 @@
     modalDialog.style.cssText = `
       display: none;
       position: fixed;
-      ${isMobile ? 'top: 0; left: 0; right: 0; transform: none;' : 'top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);'}
+      ${isMobile ? 'top: 0; left: 0; right: 0; bottom: 0; transform: none;' : 'top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);'}
       width: ${isMobile ? '100%' : '850px'};
-      height: ${isMobile ? '100vh' : '600px'};
-      max-height: ${isMobile ? '100vh' : '90vh'};
+      height: ${isMobile ? 'auto' : '600px'};
+      max-height: ${isMobile ? 'none' : '90vh'};
       background: white;
       border-radius: ${isMobile ? '0' : '15px'};
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -383,53 +383,17 @@
       if (e.key === 'Enter') sendMessage();
     };
 
-    let keyboardOpen = false;
-
-    const handleResize = () => {
-      if (isMobile && state.isOpen) {
-        const currentHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-        const dialog = document.getElementById('chat-modal-dialog');
-        if (dialog && keyboardOpen) {
-          dialog.style.height = currentHeight + 'px';
-          dialog.style.maxHeight = currentHeight + 'px';
-        }
-      }
-    };
-
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener('resize', handleResize);
-    } else {
-      window.addEventListener('resize', handleResize);
-    }
-
     input.onfocus = () => {
       input.style.borderColor = '#667eea';
       resetInactivityTimer();
       if (isMobile) {
-        keyboardOpen = true;
         setTimeout(() => {
-          const currentHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-          const dialog = document.getElementById('chat-modal-dialog');
-          if (dialog) {
-            dialog.style.height = currentHeight + 'px';
-            dialog.style.maxHeight = currentHeight + 'px';
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-          }
-        }, 150);
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }, 300);
       }
     };
     input.onblur = () => {
       input.style.borderColor = '#e0e0e0';
-      if (isMobile) {
-        keyboardOpen = false;
-        setTimeout(() => {
-          const dialog = document.getElementById('chat-modal-dialog');
-          if (dialog) {
-            dialog.style.height = '100vh';
-            dialog.style.maxHeight = '100vh';
-          }
-        }, 100);
-      }
     };
 
     modalDialog.addEventListener('click', () => {
@@ -624,10 +588,7 @@
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
       document.body.style.top = '0';
-
-      const initialHeight = window.innerHeight;
-      dialog.style.height = initialHeight + 'px';
-      dialog.style.maxHeight = initialHeight + 'px';
+      document.body.style.overflow = 'hidden';
     }
 
     overlay.style.display = 'block';
@@ -677,6 +638,7 @@
         document.body.style.position = '';
         document.body.style.width = '';
         document.body.style.top = '';
+        document.body.style.overflow = '';
       }
     }, 300);
 
