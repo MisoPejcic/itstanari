@@ -218,6 +218,8 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      min-height: 0;
+      min-width: 0;
     `;
 
     const header = document.createElement('div');
@@ -281,14 +283,16 @@
     `;
 
     const inputContainer = document.createElement('div');
+    inputContainer.id = 'chat-input-container';
     inputContainer.style.cssText = `
       padding: ${isMobile ? '12px' : '20px'};
-      padding-bottom: ${isMobile ? 'max(12px, env(safe-area-inset-bottom))' : '20px'};
+      padding-bottom: ${isMobile ? 'calc(12px + env(safe-area-inset-bottom, 0px))' : '20px'};
       background: white;
       border-top: 1px solid #e0e0e0;
       display: flex;
       gap: 10px;
       flex-shrink: 0;
+      box-sizing: border-box;
     `;
 
     const input = document.createElement('input');
@@ -620,6 +624,10 @@
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
       document.body.style.top = '0';
+
+      const initialHeight = window.innerHeight;
+      dialog.style.height = initialHeight + 'px';
+      dialog.style.maxHeight = initialHeight + 'px';
     }
 
     overlay.style.display = 'block';
