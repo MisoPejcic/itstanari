@@ -401,13 +401,12 @@
       resetInactivityTimer();
       if (isMobile) {
         setTimeout(() => {
-          const dialog = document.getElementById('chat-modal-dialog');
           const currentHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+          const dialog = document.getElementById('chat-modal-dialog');
           if (dialog) {
             dialog.style.height = currentHeight + 'px';
           }
-          inputContainer.scrollIntoView({ behavior: 'smooth', block: 'end' });
-        }, 300);
+        }, 100);
       }
     };
     input.onblur = () => {
