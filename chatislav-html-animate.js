@@ -154,17 +154,15 @@
     modalDialog.style.cssText = `
       display: none;
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
-      width: ${isMobile ? '95%' : '850px'};
-      height: ${isMobile ? '95vh' : '600px'};
-      max-height: ${isMobile ? '95vh' : '90vh'};
+      ${isMobile ? 'top: 0; left: 0; transform: none;' : 'top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);'}
+      width: ${isMobile ? '100%' : '850px'};
+      height: ${isMobile ? '100vh' : '600px'};
+      max-height: ${isMobile ? '100vh' : '90vh'};
       background: white;
-      border-radius: ${isMobile ? '10px' : '15px'};
+      border-radius: ${isMobile ? '0' : '15px'};
       box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       z-index: ${CONFIG.zIndex};
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: ${isMobile ? 'opacity 0.3s ease' : 'transform 0.3s ease, opacity 0.3s ease'};
       opacity: 0;
       display: flex;
       overflow: hidden;
@@ -222,12 +220,14 @@
 
     const header = document.createElement('div');
     header.style.cssText = `
-      padding: 20px;
+      padding: ${isMobile ? '15px' : '20px'};
+      padding-top: ${isMobile ? 'max(15px, env(safe-area-inset-top))' : '20px'};
       background: white;
       border-bottom: 1px solid #e0e0e0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-shrink: 0;
     `;
 
     const headerLeft = document.createElement('div');
@@ -236,8 +236,8 @@
     const headerAnimContainer = document.createElement('div');
     headerAnimContainer.id = 'header-animation-container';
     headerAnimContainer.style.cssText = `
-      width: 40px;
-      height: 40px;
+      width: ${isMobile ? '50px' : '40px'};
+      height: ${isMobile ? '50px' : '40px'};
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       border-radius: 50%;
       display: flex;
@@ -253,12 +253,12 @@
     state.headerContainer = headerAnimContainer;
 
     const headerTitle = document.createElement('span');
-    headerTitle.style.cssText = 'font-weight: bold; font-size: 18px; color: #333;';
+    headerTitle.style.cssText = `font-weight: bold; font-size: ${isMobile ? '16px' : '18px'}; color: #333;`;
     headerTitle.textContent = 'Chat sa nama';
 
     const closeButton = document.createElement('button');
     closeButton.id = 'close-modal';
-    closeButton.style.cssText = 'background: none; border: none; color: #999; font-size: 28px; cursor: pointer; padding: 0; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;';
+    closeButton.style.cssText = `background: none; border: none; color: #999; font-size: ${isMobile ? '32px' : '28px'}; cursor: pointer; padding: 0; width: ${isMobile ? '40px' : '30px'}; height: ${isMobile ? '40px' : '30px'}; display: flex; align-items: center; justify-content: center; touch-action: manipulation;`;
     closeButton.innerHTML = '×';
 
     headerLeft.appendChild(headerAnimContainer);
@@ -277,24 +277,30 @@
 
     const inputContainer = document.createElement('div');
     inputContainer.style.cssText = `
-      padding: 20px;
+      padding: ${isMobile ? '12px' : '20px'};
+      padding-bottom: ${isMobile ? 'max(12px, env(safe-area-inset-bottom))' : '20px'};
       background: white;
       border-top: 1px solid #e0e0e0;
       display: flex;
       gap: 10px;
+      flex-shrink: 0;
     `;
 
     const input = document.createElement('input');
     input.type = 'text';
     input.placeholder = 'Napišite poruku...';
+    input.autocomplete = 'off';
+    input.autocorrect = 'off';
+    input.autocapitalize = 'sentences';
     input.style.cssText = `
       flex: 1;
-      padding: 12px 16px;
+      padding: ${isMobile ? '14px 18px' : '12px 16px'};
       border: 2px solid #e0e0e0;
       border-radius: 25px;
       outline: none;
-      font-size: 14px;
+      font-size: ${isMobile ? '16px' : '14px'};
       transition: border-color 0.3s;
+      -webkit-appearance: none;
     `;
 
     const sendButton = document.createElement('button');
@@ -395,6 +401,7 @@
   function showAnimationInLocation(type, location) {
     let container;
     let scale;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     switch(location) {
       case 'main':
@@ -407,7 +414,7 @@
         break;
       case 'header':
         container = state.headerContainer;
-        scale = 0.05;
+        scale = isMobile ? 0.065 : 0.05;
         break;
       default:
         return;
@@ -550,14 +557,25 @@
   function openModal() {
     const overlay = document.getElementById('chat-modal-overlay');
     const dialog = document.getElementById('chat-modal-dialog');
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     overlay.style.display = 'block';
     dialog.style.display = 'flex';
 
+    if (isMobile) {
+      document.body.style.overflow = 'hidden';
+      const viewportMeta = document.querySelector('meta[name="viewport"]');
+      if (viewportMeta) {
+        viewportMeta.setAttribute('content', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover');
+      }
+    }
+
     setTimeout(() => {
       overlay.style.opacity = '1';
       dialog.style.opacity = '1';
-      dialog.style.transform = 'translate(-50%, -50%) scale(1)';
+      if (!isMobile) {
+        dialog.style.transform = 'translate(-50%, -50%) scale(1)';
+      }
     }, 10);
 
     state.isOpen = true;
@@ -581,14 +599,20 @@
   function closeModal() {
     const overlay = document.getElementById('chat-modal-overlay');
     const dialog = document.getElementById('chat-modal-dialog');
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     overlay.style.opacity = '0';
     dialog.style.opacity = '0';
-    dialog.style.transform = 'translate(-50%, -50%) scale(0.9)';
+    if (!isMobile) {
+      dialog.style.transform = 'translate(-50%, -50%) scale(0.9)';
+    }
 
     setTimeout(() => {
       overlay.style.display = 'none';
       dialog.style.display = 'none';
+      if (isMobile) {
+        document.body.style.overflow = '';
+      }
     }, 300);
 
     state.isOpen = false;
