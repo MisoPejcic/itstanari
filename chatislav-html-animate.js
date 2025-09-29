@@ -65,14 +65,17 @@
   }
 
   function createCustomChatUI() {
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
     const container = document.createElement('div');
     container.id = 'it-stanari-chat-container';
     container.style.cssText = `
       position: fixed;
-      bottom: 20px;
+      bottom: ${isMobile ? '80px' : '20px'};
       right: 20px;
       z-index: ${CONFIG.zIndex};
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      pointer-events: auto;
     `;
 
     const chatButton = document.createElement('div');
@@ -88,6 +91,9 @@
       transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
       overflow: hidden;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      pointer-events: auto;
     `;
 
     const avatarContainer = document.createElement('div');
@@ -145,7 +151,6 @@
 
     const modalDialog = document.createElement('div');
     modalDialog.id = 'chat-modal-dialog';
-    const isMobile = window.innerWidth <= 768;
     modalDialog.style.cssText = `
       display: none;
       position: fixed;
@@ -338,9 +343,17 @@
     state.animationContainer = animationContainer;
 
     chatButton.onclick = () => openModal();
+    chatButton.ontouchend = (e) => {
+      e.preventDefault();
+      openModal();
+    };
     modalOverlay.onclick = () => closeModal();
     document.getElementById('close-modal').onclick = () => closeModal();
     sendButton.onclick = () => sendMessage();
+    sendButton.ontouchend = (e) => {
+      e.preventDefault();
+      sendMessage();
+    };
     input.onkeypress = (e) => {
       if (e.key === 'Enter') sendMessage();
     };
