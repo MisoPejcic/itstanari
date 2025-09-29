@@ -73,7 +73,7 @@
       position: fixed;
       bottom: ${isMobile ? '80px' : '20px'};
       right: 20px;
-      z-index: ${CONFIG.zIndex};
+      z-index: 2147483647;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       pointer-events: auto;
     `;
@@ -94,6 +94,7 @@
       touch-action: manipulation;
       -webkit-tap-highlight-color: transparent;
       pointer-events: auto;
+      z-index: 2147483647;
     `;
 
     const avatarContainer = document.createElement('div');
