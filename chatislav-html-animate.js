@@ -152,23 +152,48 @@
 
     const modalDialog = document.createElement('div');
     modalDialog.id = 'chat-modal-dialog';
-    modalDialog.style.cssText = `
-      display: none;
-      position: fixed;
-      ${isMobile ? 'top: 0; left: 0; right: 0; bottom: 0; transform: none;' : 'top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);'}
-      width: ${isMobile ? '100%' : '850px'};
-      height: ${isMobile ? 'auto' : '600px'};
-      max-height: ${isMobile ? 'none' : '90vh'};
-      background: white;
-      border-radius: ${isMobile ? '0' : '15px'};
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      z-index: ${CONFIG.zIndex};
-      transition: ${isMobile ? 'opacity 0.3s ease' : 'transform 0.3s ease, opacity 0.3s ease'};
-      opacity: 0;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    `;
+
+    if (isMobile) {
+      modalDialog.style.cssText = `
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+        background: white;
+        border-radius: 0;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        z-index: ${CONFIG.zIndex};
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      `;
+    } else {
+      modalDialog.style.cssText = `
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        width: 850px;
+        height: 600px;
+        max-height: 90vh;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        z-index: ${CONFIG.zIndex};
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        display: flex;
+        flex-direction: row;
+        overflow: hidden;
+      `;
+    }
 
     const leftSection = document.createElement('div');
     leftSection.style.cssText = `
