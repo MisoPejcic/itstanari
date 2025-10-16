@@ -459,11 +459,11 @@
         break;
       case 'avatar':
         container = state.avatarContainer;
-        scale = 0.08;
+        scale = 0.25;
         break;
       case 'header':
         container = state.headerContainer;
-        scale = isMobile ? 0.065 : 0.05;
+        scale = isMobile ? 0.20 : 0.18;
         break;
       default:
         return;
@@ -537,6 +537,15 @@
       justify-content: center;
     `;
 
+    let offsetY = '0';
+    let offsetX = '0';
+    if (location === 'main') {
+      offsetY = CONFIG.animationOffsetY;
+    } else if (location === 'avatar' || location === 'header') {
+      offsetY = '20%';
+      offsetX = '2%';
+    }
+
     const iframe = document.createElement('iframe');
     iframe.src = CONFIG.animations[type] + '?t=' + Date.now();
     iframe.style.cssText = `
@@ -544,7 +553,7 @@
       height: 720px;
       border: none;
       position: absolute;
-      transform: scale(${scale}) translateY(${location === 'main' ? CONFIG.animationOffsetY : '0'});
+      transform: scale(${scale}) translate(${offsetX}, ${offsetY});
       transform-origin: center center;
       pointer-events: none;
       background: transparent;
